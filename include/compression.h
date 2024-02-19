@@ -25,7 +25,7 @@ inline uint32_t * compress(uint32_t * in, uint32_t length, uint32_t * out) {
         if(in[i]>M) M=in[i];
         if(in[i]<m) m=in[i];
     }
-    int b = bits(static_cast<uint32_t>(M-m));
+    int b = bits_for(static_cast<uint32_t>(M-m));
     out[0] = m;
     ++out;
     out[0] = M;
@@ -62,7 +62,7 @@ inline uint32_t * uncompress(uint32_t * in, uint32_t * out, uint32_t & nvalue) {
     ++in;
     uint32_t M = in[0];
     ++in;
-    int b = bits(static_cast<uint32_t>(M-m));
+    int b = bits_for(static_cast<uint32_t>(M-m));
 #ifdef _OPENMP
     #pragma omp parallel for
 #endif

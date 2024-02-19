@@ -39,7 +39,7 @@ inline uint8_t *turbocompress(const uint32_t *in, uint32_t length,
     if (in[i] < m)
       m = in[i];
   }
-  int b = bits(static_cast<uint32_t>(M - m));
+  int b = bits_for(static_cast<uint32_t>(M - m));
   memcpy(out, &m, sizeof(m));
   out += sizeof(m);
   memcpy(out, &M, sizeof(M));
@@ -74,7 +74,7 @@ inline const uint8_t *turbouncompress(const uint8_t *in, uint32_t *out,
   in += sizeof(m);
   memcpy(&M, in, sizeof(M));
   in += sizeof(M);
-  int b = bits(static_cast<uint32_t>(M - m));
+  int b = bits_for(static_cast<uint32_t>(M - m));
 #ifdef _OPENMP
 #pragma omp parallel for
 #endif

@@ -69,7 +69,7 @@ static inline void __builtin_unreachable() {
 #include <stdint.h> // part of Visual Studio 2010 and better
 
 // integer logarithm function
-static inline uint32_t bits(const uint32_t v) {
+static inline uint32_t bits_for(const uint32_t v) {
     return v == 0 ? 0 : 32 - __builtin_clz(v); // todo: make portable (Visual studio)
 }
 
